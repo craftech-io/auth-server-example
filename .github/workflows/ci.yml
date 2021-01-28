@@ -2,9 +2,6 @@ name: Docker Build and Push
 
 on:
   push:
-    paths:
-      - 'Dockerfile'
-      - '.github/workflows/ci.yml'
     branches:
       - master
   release:
@@ -37,9 +34,3 @@ jobs:
           repository: craftech/chartmuseum-auth-server
           dockerfile: Dockerfile
           tag_with_ref: true
-
-      - uses: craftech-io/slack-action@v1
-        with:
-          slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
-          slack_channel: deploy
-        if: always()
