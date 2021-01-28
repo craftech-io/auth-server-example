@@ -15,6 +15,7 @@ var (
 	tokenExpiry       = time.Minute * 5
 	requiredGrantType = "client_credentials"
 	masterAccessKey   = os.Getenv("AUTH_SERVER_MASTER_KEY")
+	privateKey		  = os.Getenv("AUTH_SERVER_PRIVATE_KEY_PATH")
 )
 
 func oauthTokenHandler(c *gin.Context) {
@@ -56,7 +57,7 @@ func oauthTokenHandler(c *gin.Context) {
 func main() {
 	var err error
 	tokenGenerator, err = cmAuth.NewTokenGenerator(&cmAuth.TokenGeneratorOptions{
-		PrivateKeyPath: "./config/server.key",
+		PrivateKeyPath: privateKey,
 	})
 	if err != nil {
 		panic(err)
