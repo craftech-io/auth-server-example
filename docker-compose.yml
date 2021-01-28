@@ -8,6 +8,7 @@ services:
     command: "go run main.go"
     environment:
       - "AUTH_SERVER_MASTER_KEY=mypassword"
+      - "AUTH_SERVER_PRIVATE_KEY_PATH=/config/server.key"
     working_dir: "/go/src/github.com/chartmuseum/auth-server-example/authserver"
     volumes:
       - "./authserver:/go/src/github.com/chartmuseum/auth-server-example/authserver:ro"
